@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Design by foolishdeveloper.com -->
+    <title>Generate Playlists</title>
+    
+    <link rel="stylesheet" type="text/css" href="../static/main2.css">
+    
+    <!--Stylesheet-->
+    
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form method="POST" action="">
+        <h3 style="color:1DB954;">Log In</h3>
+        <p>We suggest you to login with <a href="{{ url_for('authorize') }}">Spotify</a> to get more accurate recommendations. However, you can get recommendations even without Spotify Login, by just simply linking playlist(public) links form Spotify. These playlist links will be used to study your audio features and recommend you the best songs. </p>
+        {% block content %}
+        {{ form.hidden_tag() }}
+        <fieldset >
+            <div>
+                {{ form.playlist_link1.label(class="form-control-label") }}
+
+                {% if form.playlist_link1.errors %}
+                    {{ form.playlist_link1() }}
+                    <div>
+                        {% for error in form.playlist_link1.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.playlist_link1() }}
+                {% endif %}
+            </div>
+            <div>
+                {{ form.playlist_link2.label(class="form-control-label") }}
+
+                {% if form.playlist_link2.errors %}
+                    {{ form.playlist_link2() }}
+                    <div>
+                        {% for error in form.playlist_link2.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.playlist_link2() }}
+                {% endif %}
+            </div>
+            
+            </fieldset>
+        {% endblock content %}
+        <button>Submit</button>
+    </form>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

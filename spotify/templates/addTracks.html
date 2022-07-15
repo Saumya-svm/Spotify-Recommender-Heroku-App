@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Design by foolishdeveloper.com -->
+    <title>Add Tracks</title>
+    
+    <link rel="stylesheet" type="text/css" href="../static/main2.css">
+    <script src=
+    "https://code.jquery.com/jquery-1.12.4.min.js">
+        </script>
+    <!--Stylesheet-->
+    
+</head>
+<body>
+    <!-- <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div> -->
+<div class="container" >
+    <form method="POST" action="" class="search">
+        <h3 style="color:1DB954;">Add Track</h3>
+        {{ form.hidden_tag() }}
+        <fieldset >
+            <div class="inform">
+                {{ form.search.label(class="form-control-label") }}
+
+                {% if form.search.errors %}
+                    {{ form.search() }}
+                    <div>
+                        {% for error in form.search.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.search() }}
+                {% endif %}
+                </div>
+            </fieldset>
+        <button class="test">
+            Enter
+        </button>
+    </form>
+</div>
+<div class="container">
+    {% for tracklink, id, name, artist, a, b in tracks %}
+    <div class="card">
+      <div class="card__body">
+        <div class="search_results">
+            <p><a class='song' href="https://open.spotify.com/track/{{ id }}"+ target="blank">{{ name }}</a></p>
+            <p class='artist'>{{ artist }}</p>
+            {% for i in a %}
+                {% for j in b %}
+                    <p style="font-size: 32;"><a href="{{ url_for('add', playlist_id=i[loop.index-1], track_add=id) }}" style="font-size:32;">Add in {{ j }}</a></p>
+                {% endfor %}
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+{% endfor %}
+
+  
+  </div>
+</body>
+</html>

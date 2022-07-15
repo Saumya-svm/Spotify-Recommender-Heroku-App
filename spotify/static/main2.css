@@ -1,0 +1,208 @@
+*,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #000000;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200 px;
+    margin-block: 2rem;
+    margin-right: 100px;
+    margin-bottom: 50px;
+    gap: 10rem;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: clamp(20rem, calc(20rem + 2vw), 22rem);
+    overflow: hidden;
+    box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 2.5em;
+    background: #ECE9E6;
+  background: linear-gradient(to right, #1DB954, #1DB954);
+  
+  }
+  
+  
+  
+  .card__body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+.song{
+    font-size: large;
+    color:#000000
+}
+.artist{
+    color: #2a2a2b
+}
+a{
+    font-size: small;
+    color: #ffffff;
+}
+.search_results {
+    /* 50px is the minimum height wihout aby playlist_names , 20px is for padding, 20px is needed for each playlist name*/
+    height:auto;
+    padding: 10px;
+    width:200px;
+    background-color: #1DB954;
+    margin: 10px;
+}
+.search{
+position: relative;
+}
+.add{
+    margin-top: 10px;
+    width: 50%;
+    background-color: #1DB954;
+    color: #000000;
+    padding: 5px 0;
+    font-size: 12px;
+    font-weight: 200;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.background{
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.background .shape{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+.shape:first-child{
+    background: linear-gradient(
+        #1DB954,
+        #1DB954
+    );
+    left: -120px;
+    top: -80px;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        #1DB954,
+        #1DB954
+    );
+    right: -120px;
+    bottom: -80px;
+}
+form{
+    height: 400px;
+    width: 400px;
+    background-color: #000000;
+    position: absolute;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+  color: #1DB954;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+label{
+    display: block;
+  color : #4cd47c;
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: 500;
+}
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: #000000;
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: #ffffff;
+}
+p{
+    color:#1DB954;
+    font-size: large;
+}
+span{
+    color:#000000;
+}
+button{
+    margin-top: 30px;
+    width: 100%;
+    background-color: #1DB954;
+    color: #000000;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.social{
+  margin-top: 30px;
+  display: flex;
+}
+.social div{
+  background: red;
+  width: 150px;
+  border-radius: 3px;
+  padding: 5px 10px 10px 5px;
+  background-color: rgba(255,255,255,0.27);
+  color: #eaf0fb;
+  text-align: center;
+}
+.social div:hover{
+  background-color: rgba(255,255,255,0.47);
+}
+.social .fb{
+  margin-left: 25px;
+}
+.social i{
+  margin-right: 4px;
+}
+label{
+    color : #4cd47c
+}
+
+input {
+    color : #1DB954
+}
+.form-check{
+    display: block;
+}
+.inform{
+    padding:5px;
+}
+.form-control-label{
+    padding: 5px;
+}
