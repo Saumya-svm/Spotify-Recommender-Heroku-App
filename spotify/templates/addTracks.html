@@ -46,6 +46,7 @@
     <div class="card">
       <div class="card__body">
         <div class="search_results">
+            <iframe style="border-radius:12px; height:80px;min-width:250px; max-width: 350px;" src="https://open.spotify.com/embed/track/{{ id }}" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
             <p><a class='song' href="https://open.spotify.com/track/{{ id }}"+ target="blank">{{ name }}</a></p>
             <p class='artist'>{{ artist }}</p>
             {% for i in a %}

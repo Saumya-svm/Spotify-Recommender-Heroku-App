@@ -153,22 +153,29 @@ def spotifylogout():
 @app.route('/getplaylist', methods=['GET', 'POST'])
 def getplaylist():
     response = getPlaylistsLinks(session['access_token'])
+    searchBoolean = 0
+    playlist_ids = response
     if not response:
         return render_template('error.html', error=response)
     else:
-        ids = response
         form = SearchForm()
-        search_tracks = []
+        tracks = []
+        links = []
         playlist_ids = getPlaylistsLinks(session['access_token'])
         playlist_names = getPlaylistsNames(session['access_token'])
         name_id_zip  = zip(playlist_names, playlist_ids)
         if form.validate_on_submit():
+            searchBoolean = 1
             search_response = search(session['access_token'], form.search.data)
-            '''if request.form.getlist('match')[0] == 'playlist1':
-                print('hello')'''
             for item in search_response:
-                search_tracks.append(['open.spotify.com/track/'+item['id'], item['id'], item['name'], item['artists'][0]['name']])
-        return render_template('getPlaylist.html', tracks=search_tracks, form=form, ids=ids, zip=name_id_zip)
+                tracks.append(['open.spotify.com/track/'+item['id'], item['id'], item['name'], item['artists'][0]['name'], [playlist_ids], playlist_names])
+                links.append(item['id'])
+    return render_template('getPlaylist.html',links=links, tracks=tracks, form=form, ids=playlist_ids, zip=name_id_zip, searchBoolean=searchBoolean)
+
+@app.route('/generated')
+def generated():
+    idd = session['created_id']
+    return render_template('generated.html', id=idd)
 
 @app.route('/generateplaylist', methods=['GET', 'POST'])
 def generateplaylist():
@@ -203,10 +210,11 @@ def generateplaylist():
             # recommended_tracks = list(pd.read_csv('Recommender/test_uri.csv')['uri'].values)
             user_id = getUserInformation(session['access_token'])
             playlist_id = create_playlist(session['access_token'], user_id, name, description)
+            session['created_id'] = playlist_id
             playlist_ids = [playlist_id]
             print(addtracks(session['access_token'], playlist_id, recommended_tracks, 500))
             flash('playlist generated')
-            #return redirect(url_for('getplaylist'))
+            return redirect(url_for('generated'))
         return render_template('generateplaylist.html', form=form, ids=playlist_ids, searchform=searchform, searchboolean=searchboolean, prediction=prediction)
 
 
@@ -260,7 +268,6 @@ def searchTracks():
             for item in search_response:
                 tracks.append(['open.spotify.com/track/'+item['id'], item['id'], item['name'], item['artists'][0]['name'], playlist_ids, playlist_names])
                 links.append(item['id'])
-
     else:
         return render_template('error.html', error='Login with Spotify')
     return render_template('addTracks.html', form=form, tracks=tracks, links=links, playlist_ids = playlist_ids, zip=name_id_zip)

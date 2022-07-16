@@ -44,25 +44,38 @@
             </button>
         </form>
     </div>
-    <div class="container">
-        {% for id in ids %}
-        <div class="card" style="width:500px padding:30px">
-            <div class="card__body">
-              <div>
-                  <iframe style="border-radius:12px; width:450px" src="https://open.spotify.com/embed/playlist/{{id}}" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-              </div>
+    {% if searchBoolean == 1 %}
+        <div class="container">
+            {% for tracklink, id, name, artist, a, b in tracks %}
+            <div class="card">
+                <div class="card__body">
+                    <div class="search_results">
+                        <iframe style="border-radius:12px; height:80px;width:300px" src="https://open.spotify.com/embed/track/{{ id }}" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                        <p><a class='song' href="https://open.spotify.com/track/{{ id }}"+ target="blank">{{ name }}</a></p>
+                        <p class='artist'>{{ artist }}</p>
+                        {% for i in a %}
+                            {% for j in b %}
+                                <p style="font-size: 32;"><a href="{{ url_for('add', playlist_id=i[loop.index-1], track_add=id) }}" style="font-size:32;">Add in {{ j }}</a></p>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
-          </div>
         {% endfor %}
-    </div>
-    <!-- {% for tracklink, id, name, artist in tracks %}
-        <div class="search_results">
-            <a href="https://open.spotify.com/track/{{ id }}"+ target="blank">{{ name }}</a>
-            <p>{{ artist }}</p>
-            {% for name, playlist_id in zip %}
-            <p><a href="{{ url_for('add', playlist_id=playlist_id, track_add=id) }}">Add in {{ name }}</a></p>
+        </div>
+    {% else %}
+        <div class="container">
+            {% for id in ids %}
+            <div class="card" style="width:500px; padding-top:30px; padding-bottom:30px; padding-left: 10px;">
+                <div class="card__body">
+                <div>
+                    <iframe style="border-radius:12px; width:450px" src="https://open.spotify.com/embed/playlist/{{id}}" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                </div>
+                </div>
+            </div>
             {% endfor %}
         </div>
-        {% endfor %} -->
+    {% endif %}
+
     </body>
     </html>

@@ -11,10 +11,11 @@
 </head>
 <body>
     <h1 style="color:aliceblue">{{ prediction }}</h1>
-    <div class="background">
+    <!-- <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
-    </div>
+    </div> -->
+    <div class="container">
     <form method="POST" action="">
         <h3 style="color:1DB954;">Generate Playlists</h3>
         {% block content %}
@@ -86,10 +87,11 @@
             
         </fieldset>
         {% endblock content %}
-        <button>{{ form.submit() }}</button>
-        <p>* Generated playlists will be private</p>
+        <button>Generate</button>
+        <p style="padding-top: 10px">* Generated playlists will be private</p>
         <p>** Reloading the site may cause the same playlist to be generated every time.</p>
     </form>
+</div>
     <!-- Optional JavaScript -->
     {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -136,13 +138,6 @@
     </div>
     {% endif %}
 </div> -->
-    {% for id in ids %}
-    <h1>{{id}}</h1>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/{{id}}" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-    {% endfor %}
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
 </html>
