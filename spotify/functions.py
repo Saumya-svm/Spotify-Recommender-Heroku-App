@@ -213,7 +213,7 @@ def recommend(id1, id2, token):
     data_vector[categorical_columns] = test[categorical_columns].mode()
     columns = numerical_columns+categorical_columns
 
-    songs = pd.read_csv('./spotify/100000_audio_features.csv')
+    songs = pd.read_csv('./spotify/audio_features.csv')
     result = cosine_similarity(data_vector[columns], songs[columns])
     indices = np.argsort(result[0])[-40:]
     tracks_uri = list(songs.iloc[indices]['uri'].values)
@@ -247,7 +247,7 @@ def getUserInformation(token):
     post_response = requests.get(api_url, headers=headers, params={})
 
     if post_response.status_code == 200:
-        return post_response.json()['id']
+        return post_response.json()
     else:
         return post_response.json()
 

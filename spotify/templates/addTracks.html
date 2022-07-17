@@ -12,10 +12,18 @@
     
 </head>
 <body>
-    <!-- <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div> -->
+    <div style="color:rgb(76, 232, 28);font-size: 14px;" class="container flash">
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    </div>
 <div class="container" >
     <form method="POST" action="" class="search">
         <h3 style="color:1DB954;">Add Track</h3>
@@ -47,7 +55,7 @@
       <div class="card__body">
         <div class="search_results">
             <iframe style="border-radius:12px; height:80px;min-width:250px; max-width: 350px;" src="https://open.spotify.com/embed/track/{{ id }}" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-            <p><a class='song' href="https://open.spotify.com/track/{{ id }}"+ target="blank">{{ name }}</a></p>
+            <p style="margin-top: 10px;"><a class='song' href="https://open.spotify.com/track/{{ id }}"+ target="blank">{{ name }}</a></p>
             <p class='artist'>{{ artist }}</p>
             {% for i in a %}
                 {% for j in b %}

@@ -15,10 +15,11 @@ import pandas as pd
 @app.route('/')
 @app.route('/home')
 def home():
+    session['img'] = '../static/profile_pics/default.jpg'
     if 'access_token' not in session:
         return render_template('home.html')
     else:
-        return render_template('home.html', token=session['access_token'])
+        return render_template('home.html', token=session['access_token'], img=session['img'])
 
 # @app.route('/test')
 # def db_test():
@@ -119,9 +120,12 @@ def callback():
         return render_template('error.html', error='Failed to access token', tokens=tokens.json())
     if session['next']:    
         next_url = url_for(session['next'])
+    info = getUserInformation(session['access_token'])['images']
+    if info:
+        session['img'] = getUserInformation(session['access_token'])['images'][0]['url']
     print('next', session['next'])
     return redirect(next_url) if session['next'] else redirect(url_for('spotifyaccount'))
-    return redirect(url_for('spotifyaccount'))
+
 
 # decorator for accessing spotify accounts
 def spotifyloginrequired(func):
@@ -139,7 +143,7 @@ def spotifyloginrequired(func):
 @app.route('/spotifyaccount')
 def spotifyaccount():
     if len(session['access_token']) > 0:
-        return render_template('spotifyaccount.html')
+        return render_template('spotifyaccount.html', img=session['img'])
     else:
         return render_template('error.html', error='Login with Spotify')
 
@@ -189,32 +193,35 @@ def generateplaylist():
     if len(session['access_token']) == 0:
         return redirect(url_for('authorize', next=request.endpoint))
     else:
-        if form.validate_on_submit():
-            searchboolean = True
-            id1 = form.playlist_id1.data
-            id2 = form.playlist_id2.data
-            name = form.playlist_name.data
-            description = form.playlist_description.data
-            
-            playlist_ids = [id1, id2]
-            for playlist_id in playlist_ids:
-                tracks_uri.extend(getTracks(session['access_token'], playlist_id))
-            """"
+        try:
+            if form.validate_on_submit():
+                searchboolean = True
+                id1 = form.playlist_id1.data
+                id2 = form.playlist_id2.data
+                name = form.playlist_name.data
+                description = form.playlist_description.data
+                
+                playlist_ids = [id1, id2]
+                for playlist_id in playlist_ids:
+                    tracks_uri.extend(getTracks(session['access_token'], playlist_id))
+                """"
 
-            after getting the playlists links we will run a recommender system and get the tracks with their uri
+                after getting the playlists links we will run a recommender system and get the tracks with their uri
 
-            """
-            # getting recommendations
-            # concat the links
-            recommended_tracks = recommend(id1, id2, session['access_token'])
-            # recommended_tracks = list(pd.read_csv('Recommender/test_uri.csv')['uri'].values)
-            user_id = getUserInformation(session['access_token'])
-            playlist_id = create_playlist(session['access_token'], user_id, name, description)
-            session['created_id'] = playlist_id
-            playlist_ids = [playlist_id]
-            print(addtracks(session['access_token'], playlist_id, recommended_tracks, 500))
-            flash('playlist generated')
-            return redirect(url_for('generated'))
+                """
+                # getting recommendations
+                # concat the links
+                recommended_tracks = recommend(id1, id2, session['access_token'])
+                # recommended_tracks = list(pd.read_csv('Recommender/test_uri.csv')['uri'].values)
+                user_id = getUserInformation(session['access_token'])['id']
+                playlist_id = create_playlist(session['access_token'], user_id, name, description)
+                session['created_id'] = playlist_id
+                playlist_ids = [playlist_id]
+                print(addtracks(session['access_token'], playlist_id, recommended_tracks, 500))
+                flash('playlist generated')
+                return redirect(url_for('generated'))
+        except:
+            flash("**Kindly provide links to Playlists which are public. We cannot access other user's private playlist.")
         return render_template('generateplaylist.html', form=form, ids=playlist_ids, searchform=searchform, searchboolean=searchboolean, prediction=prediction)
 
 
@@ -277,8 +284,8 @@ def add(playlist_id, track_add):
     track_add = ['spotify:track:'+track_add]
     response = addtracks(session['access_token'], playlist_id, track_add)
     if response.status_code == 201:
-        flash('Track added. It might take time for the track to show in the embedded playlists below due to limitations fropm Spotify. However, your songs will be added in the playlist in your Spotify Account :)')
-        return redirect(url_for('getplaylist'))
+        flash('**Track added. It might take time for the track to show in the embedded playlists below due to limitations fropm Spotify. However, your songs will be added in the playlist in your Spotify Account :)')
+        return redirect(url_for('searchTracks'))
     else:
-        flash('Track not added')
-        return redirect(url_for('home'))
+        flash('**Track not added')
+        return redirect(url_for('searchTracks'))
