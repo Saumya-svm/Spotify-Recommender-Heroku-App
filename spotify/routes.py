@@ -219,7 +219,6 @@ def generateplaylist():
                 session['created_id'] = playlist_id
                 playlist_ids = [playlist_id]
                 print(addtracks(session['access_token'], playlist_id, recommended_tracks, 500))
-                flash('playlist generated')
                 return redirect(url_for('generated'))
         except:
             flash("**Kindly provide links to Playlists which are public. We cannot access other user's private playlist.")
