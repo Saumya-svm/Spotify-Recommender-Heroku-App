@@ -15,7 +15,8 @@ import pandas as pd
 @app.route('/')
 @app.route('/home')
 def home():
-    session['img'] = '../static/profile_pics/default.jpg'
+    if 'img' not in session:
+        session['img'] = '../static/profile_pics/default.jpg'
     if 'access_token' not in session:
         return render_template('home.html')
     else:
@@ -121,7 +122,7 @@ def callback():
     if session['next']:    
         next_url = url_for(session['next'])
     info = getUserInformation(session['access_token'])['images']
-    if info:
+    if len(info) > 0:
         session['img'] = getUserInformation(session['access_token'])['images'][0]['url']
     print('next', session['next'])
     return redirect(next_url) if session['next'] else redirect(url_for('spotifyaccount'))
