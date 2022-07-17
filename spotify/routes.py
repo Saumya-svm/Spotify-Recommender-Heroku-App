@@ -151,10 +151,10 @@ def spotifyaccount():
 @app.route('/spotifylogout')
 def spotifylogout():
     session['access_token'] = ''
-    flash('User logged out')
+    flash('**User logged out')
     session['img'] = session['img'] = '../static/profile_pics/default.jpg'
     # return redirect('https://accounts.spotify.com/en/logout')
-    return redirect(url_for('home'))
+    return render_template('home.html')
 
 @app.route('/getplaylist', methods=['GET', 'POST'])
 def getplaylist():

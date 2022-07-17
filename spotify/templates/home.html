@@ -2,11 +2,23 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <title>Buddy Playlist Generator</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../static/home.css">
 </head>
 <body>
+    <div style="color: rgb(104, 236, 56);width: auto;"class="container flash">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
 <div class="container">
     <nav style="background-color :#000000">
         <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
