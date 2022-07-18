@@ -217,3 +217,9 @@ h2{
 .flash{
     font-family: "Quicksand", sans-serif;
 }
+.center {
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+    text-align: left;
+  }
