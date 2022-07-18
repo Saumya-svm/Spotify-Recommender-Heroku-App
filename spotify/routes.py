@@ -66,7 +66,6 @@ def login():
     return render_template('login.html', title='Login', form=form)
 
 
-
 @app.route('/account')
 @login_required
 def account():
@@ -183,6 +182,13 @@ def generated():
     idd = session['created_id']
     return render_template('generated.html', id=idd)
 
+def get_id(link):
+    id = link.split('/')[-1]
+    if '?' in id:
+        print(id[:id.index('?')])
+    return id
+
+
 @app.route('/generateplaylist', methods=['GET', 'POST'])
 def generateplaylist():
     form = GeneratePlaylistForm()
@@ -198,8 +204,8 @@ def generateplaylist():
         try:
             if form.validate_on_submit():
                 searchboolean = True
-                id1 = form.playlist_id1.data
-                id2 = form.playlist_id2.data
+                id1 = get_id(form.playlist_id1.data)
+                id2 = get_id(form.playlist_id2.data)
                 name = form.playlist_name.data
                 description = form.playlist_description.data
                 

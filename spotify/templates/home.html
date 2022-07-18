@@ -19,8 +19,8 @@
             {% endif %}
         {% endwith %}
     </div>
-<div class="container">
-    <nav style="background-color :#000000">
+<div class="container center">
+    <nav style="background-color :#000000; font-size:14px;">
         <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div class="relative flex items-center justify-between h-16">
                 <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -33,43 +33,43 @@
                     <div class="hidden sm:block sm:ml-6">
                         {% if token %}
                             <div style="padding: 10px;"class="flex space-x-4">
-                                <a href="{{ url_for('home') }}" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Buddy Playlist Generator</a>
+                                <a style="font-size:17px" href="{{ url_for('home') }}" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Buddy Playlist Generator</a>
                                 
-                                <a href="{{ url_for('about') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
+                                <a style="font-size:17px" href="{{ url_for('about') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
                                 
-                                <a href="{{ url_for('generateplaylist') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Generate Playlist</a>
-                                <a href="{{url_for('getplaylist')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Get Playlists</a>
-                                <a href="https://spotifybuddyclassifier.herokuapp.com/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" target="blank">Buddy Classifier</a>
-                                <a href="{{ url_for('spotifyaccount') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Account</a>
-                                <a href="{{ url_for('spotifylogout') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Logout</a>
+                                <a style="font-size:17px" href="{{ url_for('generateplaylist') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Generate Playlist</a>
+                                <a style="font-size:17px" href="{{url_for('getplaylist')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Get Playlists</a>
+                                <a style="font-size:17px" href="https://spotifybuddyclassifier.herokuapp.com/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" target="blank">Buddy Classifier</a>
+                                <a style="font-size:17px" href="{{ url_for('spotifyaccount') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Account</a>
+                                <a style="font-size:17px" href="{{ url_for('spotifylogout') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Logout</a>
                                 <img class="h-8 w-8 rounded-full " src="{{ img }}" alt="">
                                 </div>
                             </div>
                         {% else %}
                             {% if current_user.is_authenticated %}
                                 <div class="flex space-x-4">
-                                    <a href="{{ url_for('home') }}" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Buddy Playlist Generator</a>
+                                    <a style="font-size:17px" href="{{ url_for('home') }}" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Buddy Playlist Generator</a>
                                     
-                                    <a href="{{ url_for('about') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
+                                    <a style="font-size:17px" href="{{ url_for('about') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
                                     
-                                    <a href="{{ url_for('generateplaylist') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Generate Playlist</a>
+                                    <a style="font-size:17px" href="{{ url_for('generateplaylist') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Generate Playlist</a>
                                     
-                                    <a href="https://spotifybuddyclassifier.herokuapp.com/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" target="blank">Buddy Classifier</a>
-                                    <a href="{{ url_for('account') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Account</a>
-                                    <a href="{{ url_for('logout') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Logout</a>
+                                    <a style="font-size:17px" href="https://spotifybuddyclassifier.herokuapp.com/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" target="blank">Buddy Classifier</a>
+                                    <a style="font-size:17px" href="{{ url_for('account') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Account</a>
+                                    <a style="font-size:17px" href="{{ url_for('logout') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Logout</a>
                                 </div>
                             {% else %}
                                 <div class="flex space-x-4">
-                                    <a href="{{ url_for('home') }}" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Buddy Playlist Generator</a>
+                                    <a style="font-size:17px" href="{{ url_for('home') }}" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Buddy Playlist Generator</a>
                                     
-                                    <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
+                                    <a style="font-size:17px" href="{{ url_for('about') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
                                     
-                                    <a href="{{ url_for('generateplaylist') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Generate Playlist</a>
+                                    <a style="font-size:17px" href="{{ url_for('generateplaylist') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Generate Playlist</a>
                                     
-                                    <a href="https://spotifybuddyclassifier.herokuapp.com/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Buddy Classifier</a>
-                                    <!-- <a href="{{ url_for('login') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
-                                    <a href="{{ url_for('register') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register</a> -->
-                                    <a href="{{ url_for('authorize') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Spotify Login</a>
+                                    <a style="font-size:17px" href="https://spotifybuddyclassifier.herokuapp.com/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Buddy Classifier</a>
+                                    <!-- <a style="font-size:17px" href="{{ url_for('login') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
+                                    <a style="font-size:17px" href="{{ url_for('register') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register</a> -->
+                                    <a style="font-size:17px" href="{{ url_for('authorize') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Spotify Login</a>
                                     <div class="ml-3 relative">
                                         <div>
                                             <button type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
@@ -113,21 +113,29 @@
         
     </nav>
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div style="margin-top: 0;" class="container">
+    <div style="margin-top: 0; max-width: 500px;" class="container center">
         <img class="image" src="../static/logo/playlist generator.svg" alt="Workflow">
+    </div>
+    <div style="color:#1DB954;max-width: 700px;"class="container center">
+        <ul>
+            <p style="margin-bottom: 10px;">Ever Partying with your friends and wondering what songs will make everyone groove? Ever going on a road trip and wondering what music will make everyone enjoy the journey? </p>
+            <p style="margin-bottom: 10px;">Well worry no more! </p>
+            <p style="margin-bottom: 10px;">Introducing the Buddy Playlist Generator. </p>
+            <p style="margin-bottom: 10px;">This Recommendation system will use your playlist and your friend’s playlist and combine them to make the perfect curated playlist consisting of songs that cater to the tastes of both you and your friend.</p>
+        </ul>
     </div>
         <div class="sm:hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 {% if token %}
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a href="{{ url_for('about') }}" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">About</a>
+                <a style="font-size:17px" href="{{ url_for('about') }}" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">About</a>
                 
-                <a href="{{ url_for('generateplaylist') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Generate Playlist</a>
+                <a style="font-size:17px" href="{{ url_for('generateplaylist') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Generate Playlist</a>
                 
-                <a href="https://spotifybuddyclassifier.herokuapp.com/" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Buddy Classifier</a>
+                <a style="font-size:17px" href="https://spotifybuddyclassifier.herokuapp.com/" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Buddy Classifier</a>
                 
-                <a href="{{ url_for('spotifyaccount') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Account</a>
-                <a href="{{ url_for('spotifylogout') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Logout</a>
+                <a style="font-size:17px" href="{{ url_for('spotifyaccount') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Account</a>
+                <a style="font-size:17px" href="{{ url_for('spotifylogout') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Logout</a>
                 <div class="ml-3 relative">
                     <div>
                         <button type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
@@ -145,13 +153,13 @@
                     </div>
                 </div> -->
                 {% else %}
-                <a href="{{ url_for('about') }}" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">About</a>
+                <a style="font-size:17px" href="{{ url_for('about') }}" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">About</a>
                 
-                <a href="{{ url_for('generateplaylist') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Generate Playlist</a>
+                <a style="font-size:17px" href="{{ url_for('generateplaylist') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Generate Playlist</a>
                 
-                <a href="https://spotifybuddyclassifier.herokuapp.com/" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Buddy Classifier</a>
+                <a style="font-size:17px" href="https://spotifybuddyclassifier.herokuapp.com/" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Buddy Classifier</a>
                 
-                <a href="{{ url_for('authorize') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Spotify Login</a>
+                <a style="font-size:17px" href="{{ url_for('authorize') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Spotify Login</a>
                 {% endif %}
                 
             </div>

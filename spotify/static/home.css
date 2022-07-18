@@ -1,9 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
-
+h2
+{
+    font-weight: 200;
+}
 .image{
     justify-content: center;
-    size: auto;
+    size: 50%;
+    max-width: 50%;
+    height: 50%;
+    margin-bottom: 30px;
 }
 .container {
     display: flex;
@@ -15,12 +21,23 @@
     padding-left: 30px;
     padding-right: 10px;
     gap: 10rem;
+
   }
 body{
     font-family: "Quicksand", sans-serif;
     background-color: #000000;
+    font-size: 19px;
 }
 
 .flash{
     font-family: "Quicksand", sans-serif;
 }
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: left;
+  }
+  p{
+    margin-bottom: 20px;
+  }
