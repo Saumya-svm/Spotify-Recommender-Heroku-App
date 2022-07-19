@@ -10,6 +10,7 @@
         
     </head>
     <body>
+
         <div style="color: rgb(104, 236, 56);width: auto;"class="container flash">
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
@@ -20,6 +21,12 @@
                     </ul>
                 {% endif %}
             {% endwith %}
+        </div>
+        <div style="max-width: 700px;"class="container center">
+            <ul>
+                <p style="margin-bottom: 10px;color:#ffffff;font-size: 14px;">**Since, I am yet to get approval to my quota extension from Spotify, kindly mail me if you want to test the application. The app is in development mode right now and only selected beta users can test it.</p>
+                <p style="margin-bottom: 10px;color:#ffffff; font-size: 14px;">Mail: <a href="mailto:saumyamundra@gmail.com" target="_blank">saumyamundra@gmail.com</a></p>
+            </ul>
         </div>
         <div style="height: auto;"class="container">
             <form method="POST" action="">
