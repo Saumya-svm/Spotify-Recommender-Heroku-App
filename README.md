@@ -111,7 +111,7 @@ Mail:saumyamundra@gmail.com
 * Data Cleaning
   While extracting songs from playlists in the JSON files, there might be cases where the same somg will be available in two different playlists and hence, duplicates might be formed in the dataset. Upon calling `duplicated()` function on our dataset, we found that there are 12000 duplicates. We can drop the duplicates using `drop_duplicate()` function. I committed a mistake of checking for duplicates only after extracting the features. I could have saved myself reasonable computational time.
 * How to get recommendations?
-  We will making recommendations based on the combined music tastes of two users. We have extacted their individual playlist
+  We will making recommendations based on the combined music tastes of two users. We have extracted their individual playlist
 * Deployment
 
 ---
