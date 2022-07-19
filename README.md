@@ -40,22 +40,76 @@ Mail:saumyamundra@gmail.com
 
 ## Roadmap
 
-1. Ideation
-   The basic idea for the application was to recommend a group of users new music they can groove to collectively. There can be several ways users can connect with music. It can be through instrumentals, genres, lyrics , context etc. The first(and the most basic) version of the app will connect users through instumentals, audio features such as acousticness, tempo, valence etc. The reason this is the most basic version is because it does not take into account semantics or artist/genre preference. These additional factors can significantly wiegh in a user's music taste. Also, the songs are not classified based on genres in the current version. The recommednations will be purely based on audio features made available by Spotify R&D through Spotify Web API./
-2. Data Collection
-   token, api
-3. Data Cleaning
-4. How to get recommendations?
-5. Deployment
+* Ideation
+  The basic idea for the application was to recommend a group of users new music they can groove to collectively. There can be several ways users can connect with music. It can be through instrumentals, genres, lyrics , context etc. The first(and the most basic) version of the app will connect users through instumentals, audio features such as acousticness, tempo, valence etc. The reason this is the most basic version is because it does not take into account semantics or artist/genre preference. These additional factors can significantly wiegh in a user's music taste. Also, the songs are not classified based on genres in the current version. The recommednations will be purely based on audio features made available by Spotify R&D through Spotify Web API.
+* Data Collection
+  The songs dataset can be collected from [here](https://www.aicrowd.com/challenges/spotify-million-playlist-dataset-challenge). You can create an account on AIcrowd to download the data from the resources section. We would not get individual songs from the file, rather there will be a thousand json files which will store songs in a playlist format.
+  Accessing all the files will take a siginificant amount of time. Finally, we want a dataset wich contains songs along with their audio features, which have to be accessed through the Spotify Web API. Initially, we only have data abotu songs, with some metadata.While collecting the data from the files, I interrupted the process in the early stages due to time and computation limitations. Despite this, I had  collected metadata for about 2 million songs. The next step was to access the 'Get Audio Features' endpoint. We would have to provide  the song 'id' as the only parameter. The 'requests' library can be used, but we would have to define the endpoint url,  headers, parameters etc. by ourself. If one is unfamiliar with API calls, 'spotipy' library is there to the rescue. We can use the 'spotipy' library to get audio features for our tracks. An object will be created by passing an access token to the 'auth' parameter. The newly created object  can call various functions offering multiple functionalities. For our use case, the `audio_features()` function will get us the features for each track. 
+
+```
+{
+        "name": "musical",
+        "collaborative": "false",
+        "pid": 5,
+        "modified_at": 1493424000,
+        "num_albums": 7,
+        "num_tracks": 12,
+        "num_followers": 1,
+        "num_edits": 2,
+        "duration_ms": 2657366,
+        "num_artists": 6,
+        "tracks": [
+            {
+                "pos": 0,
+                "artist_name": "Degiheugi",
+                "track_uri": "spotify:track:7vqa3sDmtEaVJ2gcvxtRID",
+                "artist_uri": "spotify:artist:3V2paBXEoZIAhfZRJmo2jL",
+                "track_name": "Finalement",
+                "album_uri": "spotify:album:2KrRMJ9z7Xjoz1Az4O6UML",
+                "duration_ms": 166264,
+                "album_name": "Dancing Chords and Fireflies"
+            },
+            {
+                "pos": 1,
+                "artist_name": "Degiheugi",
+                "track_uri": "spotify:track:23EOmJivOZ88WJPUbIPjh6",
+                "artist_uri": "spotify:artist:3V2paBXEoZIAhfZRJmo2jL",
+                "track_name": "Betty",
+                "album_uri": "spotify:album:3lUSlvjUoHNA8IkNTqURqd",
+                "duration_ms": 235534,
+                "album_name": "Endless Smile"
+            },
+            {
+                "pos": 2,
+                "artist_name": "Degiheugi",
+                "track_uri": "spotify:track:1vaffTCJxkyqeJY7zF9a55",
+                "artist_uri": "spotify:artist:3V2paBXEoZIAhfZRJmo2jL",
+                "track_name": "Some Beat in My Head",
+                "album_uri": "spotify:album:2KrRMJ9z7Xjoz1Az4O6UML",
+                "duration_ms": 268050,
+                "album_name": "Dancing Chords and Fireflies"
+            },
+            // 8 tracks omitted
+            {
+                "pos": 11,
+                "artist_name": "Mo' Horizons",
+                "track_uri": "spotify:track:7iwx00eBzeSSSy6xfESyWN",
+                "artist_uri": "spotify:artist:3tuX54dqgS8LsGUvNzgrpP",
+                "track_name": "Fever 99\u00b0",
+                "album_uri": "spotify:album:2Fg1t2tyOSGWkVYHlFfXVf",
+                "duration_ms": 364320,
+                "album_name": "Come Touch The Sun"
+            }
+        ],
+
+    }
+```
 
 
----
 
-Readme todo-
-
-* About the project
-* Tech used in the project
-* Steps followed in the project
+* Data Cleaning
+* How to get recommendations?
+* Deployment
 
 ---
 
