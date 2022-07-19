@@ -19,7 +19,6 @@ Step 5- Please click on generate after filling all the inputs. This will redirec
 
 Step 6- Enjoy!
 
-
 Visit here: http://buddyplaylistgenerator.herokuapp.com/
 
 Since, I am yet to get approval to my quota extension from Spotify, kindly mail me if you want to test the application.
@@ -36,7 +35,6 @@ Mail:saumyamundra@gmail.com
   This will help you add new tracks to any of your playlists in your profile. The main aim is to add songs to the new generated playlist, along with the songs which were already present.
 * **Get Playlist**
   Will display all your playlists and help you explore it. This feature is still in development mode, as we will analyse and explore paterns it in the upcoming versions of the project
-
 
 ## Roadmap
 
@@ -105,15 +103,13 @@ Mail:saumyamundra@gmail.com
     }
 ```
 
-
-
 * Data Cleaning
 * How to get recommendations?
 * Deployment
 
 ---
 
-## Tools 
+## Tools
 
 Languages - Python, HTML, CSS
 
@@ -123,11 +119,29 @@ API's - Spotify Web API
 
 ## References
 
-**Data** 
+**Data**
 
 The data was downloaded from Spotify's R&D webpage. You will be redirected to AIcrowd where you would have to create an account to download the data.
 
 (https://dl.acm.org/doi/abs/10.1145/3240323.3240342):
 *Ching-Wei Chen, Paul Lamere, Markus Schedl, and Hamed Zamani. Recsys Challenge 2018: Automatic Music Playlist Continuation. In Proceedings of the 12th ACM Conference on Recommender Systems (RecSys ’18), 2018.*
 
-## Resources
+## Getting Started
+
+To run this app on your local machine,
+
+* Clone the repository
+
+  ```
+  git clone https://github.com/Saumya-svm/Spotify-Recommender-Heroku-App
+  ```
+* Install required packages/tools
+
+  ```
+  pip install -r requirements.txt
+  ```
+* Run the app
+
+  ```
+  python run.py
+  ```
