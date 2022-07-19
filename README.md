@@ -1,3 +1,4 @@
+
 ## About
 
 Ever Partying with your friends and wondering what songs will make everyone groove? Ever going on a road trip and wondering what music will make everyone enjoy the journey?
@@ -41,70 +42,76 @@ Mail:saumyamundra@gmail.com
 * **Ideation:**
   The basic idea for the application was to recommend a group of users new music they can groove to collectively. There can be several ways users can connect with music. It can be through instrumentals, genres, lyrics , context etc. The first(and the most basic) version of the app will connect users through instumentals, audio features such as acousticness, tempo, valence etc. The reason this is the most basic version is because it does not take into account semantics or artist/genre preference. These additional factors can significantly wiegh in a user's music taste. Also, the songs are not classified based on genres in the current version. The recommednations will be purely based on audio features made available by Spotify R&D through Spotify Web API.
 * **Data Collection:**
-  The songs dataset can be collected from [here](https://www.aicrowd.com/challenges/spotify-million-playlist-dataset-challenge). You can create an account on AIcrowd to download the data from the resources section. We would not get individual songs from the file, rather there will be a thousand json files which will store songs in a playlist format.
-  Accessing all the files will take a siginificant amount of time. Finally, we want a dataset wich contains songs along with their audio features, which have to be accessed through the Spotify Web API. Initially, we only have data abotu songs, with some metadata.While collecting the data from the files, I interrupted the process in the early stages due to time and computation limitations. Despite this, I had  collected metadata for about 2 million songs. The next step was to access the 'Get Audio Features' endpoint. We would have to provide  the song 'id' as the only parameter. The 'requests' library can be used, but we would have to define the endpoint url,  headers, parameters etc. by ourself. If one is unfamiliar with API calls, 'spotipy' library is there to the rescue. We can use the 'spotipy' library to get audio features for our tracks. An object will be created by passing an access token to the 'auth' parameter. The newly created object  can call various functions offering multiple functionalities. For our use case, the `audio_features()` function will get us the features for each track.
+  The songs dataset can be collected from [here](https://www.aicrowd.com/challenges/spotify-million-playlist-dataset-challenge). You can create an account on AIcrowd to download the data from the resources section. We would not get individual songs from the file, rather there will be a thousand json files which will store songs in a playlist format. Accessing all the files will take a siginificant amount of time. Finally, we want a dataset wich contains songs along with their audio features, which have to be accessed through the Spotify Web API. Initially, we only have data about songs, with some metadata.While collecting the data from the files, I interrupted the process in the early stages due to time and computation limitations. Despite this, I had  collected metadata for about 2 million songs. The songs were stored in a Pandas dataframe and then later exported out as a csv file. The next step was to access the 'Get Audio Features' endpoint. We would have to provide  the song 'id' as the only parameter. The 'requests' library can be used, but we would have to define the endpoint url,  headers, parameters etc. by ourself. If one is unfamiliar with API calls, 'spotipy' library is there to the rescue. We can use the 'spotipy' library to get audio features for our tracks. An object will be created by passing an access token to the 'auth' parameter. The newly created object  can call various functions offering multiple functionalities. For our use case, the `audio_features()` function will get us the features for each track. The function will return a dictionary with the feautures as keys for each track. Some of the features are as follows
 
-```
-{
-        "name": "musical",
-        "collaborative": "false",
-        "pid": 5,
-        "modified_at": 1493424000,
-        "num_albums": 7,
-        "num_tracks": 12,
-        "num_followers": 1,
-        "num_edits": 2,
-        "duration_ms": 2657366,
-        "num_artists": 6,
-        "tracks": [
-            {
-                "pos": 0,
-                "artist_name": "Degiheugi",
-                "track_uri": "spotify:track:7vqa3sDmtEaVJ2gcvxtRID",
-                "artist_uri": "spotify:artist:3V2paBXEoZIAhfZRJmo2jL",
-                "track_name": "Finalement",
-                "album_uri": "spotify:album:2KrRMJ9z7Xjoz1Az4O6UML",
-                "duration_ms": 166264,
-                "album_name": "Dancing Chords and Fireflies"
-            },
-            {
-                "pos": 1,
-                "artist_name": "Degiheugi",
-                "track_uri": "spotify:track:23EOmJivOZ88WJPUbIPjh6",
-                "artist_uri": "spotify:artist:3V2paBXEoZIAhfZRJmo2jL",
-                "track_name": "Betty",
-                "album_uri": "spotify:album:3lUSlvjUoHNA8IkNTqURqd",
-                "duration_ms": 235534,
-                "album_name": "Endless Smile"
-            },
-            {
-                "pos": 2,
-                "artist_name": "Degiheugi",
-                "track_uri": "spotify:track:1vaffTCJxkyqeJY7zF9a55",
-                "artist_uri": "spotify:artist:3V2paBXEoZIAhfZRJmo2jL",
-                "track_name": "Some Beat in My Head",
-                "album_uri": "spotify:album:2KrRMJ9z7Xjoz1Az4O6UML",
-                "duration_ms": 268050,
-                "album_name": "Dancing Chords and Fireflies"
-            },
-            // 8 tracks omitted
-            {
-                "pos": 11,
-                "artist_name": "Mo' Horizons",
-                "track_uri": "spotify:track:7iwx00eBzeSSSy6xfESyWN",
-                "artist_uri": "spotify:artist:3tuX54dqgS8LsGUvNzgrpP",
-                "track_name": "Fever 99\u00b0",
-                "album_uri": "spotify:album:2Fg1t2tyOSGWkVYHlFfXVf",
-                "duration_ms": 364320,
-                "album_name": "Come Touch The Sun"
-            }
-        ],
+  ```
+  {
+          "name": "musical",
+          "collaborative": "false",
+          "pid": 5,
+          "modified_at": 1493424000,
+          "num_albums": 7,
+          "num_tracks": 12,
+          "num_followers": 1,
+          "num_edits": 2,
+          "duration_ms": 2657366,
+          "num_artists": 6,
+          "tracks": [
+              {
+                  "pos": 0,
+                  "artist_name": "Degiheugi",
+                  "track_uri": "spotify:track:7vqa3sDmtEaVJ2gcvxtRID",
+                  "artist_uri": "spotify:artist:3V2paBXEoZIAhfZRJmo2jL",
+                  "track_name": "Finalement",
+                  "album_uri": "spotify:album:2KrRMJ9z7Xjoz1Az4O6UML",
+                  "duration_ms": 166264,
+                  "album_name": "Dancing Chords and Fireflies"
+              },
+              {
+                  "pos": 1,
+                  "artist_name": "Degiheugi",
+                  "track_uri": "spotify:track:23EOmJivOZ88WJPUbIPjh6",
+                  "artist_uri": "spotify:artist:3V2paBXEoZIAhfZRJmo2jL",
+                  "track_name": "Betty",
+                  "album_uri": "spotify:album:3lUSlvjUoHNA8IkNTqURqd",
+                  "duration_ms": 235534,
+                  "album_name": "Endless Smile"
+              },
+              {
+                  "pos": 2,
+                  "artist_name": "Degiheugi",
+                  "track_uri": "spotify:track:1vaffTCJxkyqeJY7zF9a55",
+                  "artist_uri": "spotify:artist:3V2paBXEoZIAhfZRJmo2jL",
+                  "track_name": "Some Beat in My Head",
+                  "album_uri": "spotify:album:2KrRMJ9z7Xjoz1Az4O6UML",
+                  "duration_ms": 268050,
+                  "album_name": "Dancing Chords and Fireflies"
+              },
+              // 8 tracks omitted
+              {
+                  "pos": 11,
+                  "artist_name": "Mo' Horizons",
+                  "track_uri": "spotify:track:7iwx00eBzeSSSy6xfESyWN",
+                  "artist_uri": "spotify:artist:3tuX54dqgS8LsGUvNzgrpP",
+                  "track_name": "Fever 99\u00b0",
+                  "album_uri": "spotify:album:2Fg1t2tyOSGWkVYHlFfXVf",
+                  "duration_ms": 364320,
+                  "album_name": "Come Touch The Sun"
+              }
+          ],
 
-    }
-```
+      }
+  ```
 
+  - acousticness - represents the confidence that a song is acoustic
+  - danceability - suitability of a song for dancing
+  - speechiness - detects the amount of spoken words in a song
+
+  You can read more about them [here](https://developer.spotify.com/documentation/web-api/reference/#/operations/get-several-audio-features). Just like extracting the song data from the json files, the process of extracting audio features is memory and computationally heavy. Upon that, the access token provided by Spotify might expire in the middle of the process. The access token provided are only active for a maximum of one hour, and the extraction of features of two million songs takes a considerably lot more time than an hour. Therefore, I decided to divide the songs into batches. I could not evenly segragate the songs as the token used to expire during a batch was running. So the range of batches were quite random. Somtimes I took a batch of 4000 and somtimes 6000, 8000 etc. At the time of writing, I extracted features for about 96000 songs, out of which 12000 were duplicates. The final recommendations were made on these some 80000 songs. However, I am runnning the feature extraction script regularly to get more data. Our final dataframe will look as follows
 * Data Cleaning
+  While extracting songs from playlists in the JSON files, there might be cases where the same somg will be available in two different playlists and hence, duplicates might be formed in the dataset. Upon calling `duplicated()` function on our dataset, we found that there are 12000 duplicates. We can drop the duplicates using `drop_duplicate()` function. I committed a mistake of checking for duplicates only after extracting the features. I could have saved myself reasonable computational time.
 * How to get recommendations?
+  We will making recommendations based on the combined music tastes of two users. We have extacted their individual playlist
 * Deployment
 
 ---
