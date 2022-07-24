@@ -160,7 +160,15 @@ To run this app on your local machine,
   pip install -r requirements.txt
   ```
 * Run the app
-  Setup your Spotify Developers Profile
+
+
+  *Setup your Spotify Developers Profile*
+
+  - Create a Spotify Developers Account [here](https://developer.spotify.com/dashboard/).
+  - To get API access, setup a project.
+  - Get your clientId, clientSecret and `redirect_uri.`
+  - Make sure the port you will be running the application on is the same as the one in the `redirect_uri`
+  - Assign those values to the corresponding variables in `__init__.py` in the 'spoitfy' package in the repo.
 
   ```
   python run.py
