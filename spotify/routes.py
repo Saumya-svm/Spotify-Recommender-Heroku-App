@@ -185,8 +185,8 @@ def generated():
 def get_id(link):
     id = link.split('/')[-1]
     if '?' in id:
-        print(id[:id.index('?')])
-    return id[:id.index('?')]
+        return id[:id.index('?')]
+    return id
 
 
 @app.route('/generateplaylist', methods=['GET', 'POST'])
